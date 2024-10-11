@@ -1,6 +1,8 @@
 import subprocess
 
-print("1 - Запустить nmap_full.sh\n2 - Запустить nmap_vuln.sh\n3 - DOS атакка\nТОЛЬКО Kali! 4 - Поиск информации\nТОЛЬКО Kali! 5 - скан web уязвимостей\nТОЛЬКО Kali! 6 - подмена ссылки (beta)")
+print("1 - полный скан nmap\n2 - скан уязвимостей nmap\n3 - DOS атакка\nТОЛЬКО Kali! 4 - Поиск информации\nТОЛЬКО Kali! 5 - скан web уязвимостей\nТОЛЬКО Kali! 6 - подмена ссылки (beta)")
+print("ТОЛЬКО kali! 7 - брутфорс wifi (beta\n)")
+
 choice = int(input("Выберите скрипт для выполнения: "))
 
 if choice == 1:
@@ -15,7 +17,8 @@ elif choice == 5:
     subprocess.run(["bash", "data/web_vuln.sh"], check=True)
 elif choice == 6:
     subprocess.run(['python3', 'data/packet_take.py'], check=True)
-
+elif choice == 7:
+    subprocess.run(["bash", "data/wifi.sh"], check=True)
 
 
 
